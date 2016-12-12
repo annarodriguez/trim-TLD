@@ -1,0 +1,6 @@
+select substring(websiteurl from '^[^:]*://(?:[^/:]*:[^/@]*@)?(?:[^/:.]*\.)+([^:/]+)' ), 
+  count(id) as tld 
+  from users 
+  where websiteurl is not null 
+  group by substring(websiteurl from '^[^:]*://(?:[^/:]*:[^/@]*@)?(?:[^/:.]*\.)+([^:/]+)' ) 
+  order by tld desc
